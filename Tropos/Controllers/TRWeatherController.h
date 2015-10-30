@@ -10,4 +10,6 @@
 @property (nonatomic, readonly) RACSignal *precipitationDescription;
 @property (nonatomic, readonly) RACCommand *updateWeatherCommand;
 
+@property (nonatomic, readwrite) NSString *zipCode;
+
 @end

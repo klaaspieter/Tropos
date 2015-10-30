@@ -52,6 +52,16 @@
                ReferencedContainer = "container:Tropos.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A12FCB6C1BE3F82700BBAD60"
+               BuildableName = "TroposUITests.xctest"
+               BlueprintName = "TroposUITests"
+               ReferencedContainer = "container:Tropos.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

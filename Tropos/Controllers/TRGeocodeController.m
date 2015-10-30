@@ -38,4 +38,23 @@
     }];
 }
 
+- (RACSignal *)geocodeAddressString:(NSString *)string
+{
+    @weakify(self)
+    return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
+        @strongify(self)
+
+        [self.geocoder geocodeAddressString:string completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+            if (!placemarks) {
+                [subscriber sendError:error];
+            } else {
+                [subscriber sendNext:[placemarks firstObject]];
+                [subscriber sendCompleted];
+            }
+        }];
+
+        return nil;
+    }];
+}
+
 @end

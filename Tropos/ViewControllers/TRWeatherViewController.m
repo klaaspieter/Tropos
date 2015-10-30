@@ -70,6 +70,7 @@
     [self configureAnalytics];
 }
 
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -79,6 +80,20 @@
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;
+}
+
+- (IBAction)chooseZipCode:(id)sender
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Enter zip code" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = @"Zip code";
+    }];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler: nil]];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"Submit" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {
+        self.controller.zipCode = alertController.textFields.firstObject.text;
+        [self.controller.updateWeatherCommand execute:self];
+    }]];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 #pragma mark - Analytics
